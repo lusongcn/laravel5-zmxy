@@ -135,7 +135,7 @@ Zmxy::ZhimaCreditAntifraudVerify($data);
 ]
 ```
 verify_code中的参数说明如下： 
-在config/zmxy.php中
+在`config/zmxy.php`中
 
 #### 欺诈关注清单
 ```php
@@ -162,6 +162,6 @@ Zmxy::ZhimaCreditAntifraudRiskList($data);
 ]
 ```
 verify_code代表风险级别，其中的参数说明如下：
-在config/zmxy.php中
+在`config/zmxy.php`中
 
 好的，到这里全部接口完毕，后期会持续迭代，欢迎讨论以及给星！
