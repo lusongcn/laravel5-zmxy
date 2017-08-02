@@ -1,0 +1,19 @@
+{
+    "name": "earnp/zmxy",
+    "description": "Laravel 5 Zmxy Package",
+    "authors": [
+        {
+            "name": "lusong",
+            "email": "714628712@qq.com",
+            "homepage": "https://phpartisan.cn"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Earnp\\Zmxy\\": "src/"
+      }
+    }
+}
