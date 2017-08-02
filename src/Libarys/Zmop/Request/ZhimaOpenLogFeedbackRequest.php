@@ -1,4 +1,5 @@
 <?php
+namespace Earnp\Zmxy\Libarys\Zmop\Request;
 /**
  * ZHIMA API: zhima.open.log.feedback request
  *

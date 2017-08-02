@@ -10,6 +10,9 @@ use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCreditWatchlistiiGetRequest;
 use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCreditAntifraudScoreGetRequest;
 use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCreditAntifraudVerifyRequest;
 use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCreditAntifraudRiskListRequest;
+use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCustomerCertificationQueryRequest;
+use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCustomerCertificationInitializeRequest;
+use Earnp\Zmxy\Libarys\Zmop\Request\ZhimaCustomerCertificationCertifyRequest;
 
 class Zmxy
 {
@@ -150,5 +153,47 @@ class Zmxy
         return $response;
     }
     
+    // 芝麻认证查询
+    public function ZhimaCustomerCertificationQuery($bizno){
+        $config=Config::get("zmxy.zmxy");
+        $client = new ZmopClient($config["gatewayUrl"],$config["appId"],$config["charset"],$config["privateKeyFile"],$config["zmPublicKeyFile"]);
+        $request = new ZhimaCustomerCertificationQueryRequest();
+        $request->setChannel("apppc");
+        $request->setPlatform("zmop");
+        $request->setBizNo($bizno);// 必要参数 
+        $response = $client->execute($request);
+        return $response;
+    }
+
+    // 芝麻认证初始化
+    public function ZhimaCustomerCertificationInitialize($name,$idcard){
+        $config=Config::get("zmxy.zmxy");
+        $client = new ZmopClient($config["gatewayUrl"],$config["appId"],$config["charset"],$config["privateKeyFile"],$config["zmPublicKeyFile"]);
+        $request = new ZhimaCustomerCertificationInitializeRequest();
+        $request->setChannel("apppc");
+        $request->setPlatform("zmop");
+        $request->setTransactionId(rand(100000000000000,999999999999999));// 必要参数 
+        $request->setProductCode("w1010100000000002978");// 必要参数 
+        $request->setBizCode("FACE");// 必要参数 
+        $request->setIdentityParam(json_encode(array("identity_type"=>"CERT_INFO","cert_type"=>"IDENTITY_CARD","cert_name"=>$name,"cert_no"=>$idcard)));
+        // 必要参数 
+        $request->setMerchantConfig("{\"need_user_authorization\":\"false\"}");// 
+        $request->setExtBizParam("{}");// 必要参数 
+        $response = $client->execute($request);
+        return $response;
+    }
+
+    // 芝麻认证开始认证
+    public function ZhimaCustomerCertificationCertify($bizno,$returnurl){
+        $config=Config::get("zmxy.zmxy");
+        $client = new ZmopClient($config["gatewayUrl"],$config["appId"],$config["charset"],$config["privateKeyFile"],$config["zmPublicKeyFile"]);
+        $request = new ZhimaCustomerCertificationCertifyRequest();
+        $request->setChannel("apppc");
+        $request->setPlatform("zmop");
+        $request->setBizNo($bizno);// 必要参数 
+        $request->setReturnUrl($returnurl);// 必要参数 
+        $url = $client->generatePageRedirectInvokeUrl($request);
+        return $url;
+    }
 
 }
