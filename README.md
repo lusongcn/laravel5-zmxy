@@ -8,14 +8,10 @@
 #### 安装拓展
 1.在 `composer.json` 的 `require` 里面加入以下内容：
 ```composer
-"earnp/zmxy": "v1.0"
+composer require "earnp/zmxy:dev-master"
 ```
 
-2.添加完成后，执行 `composer update`
-```composer
-composer update
-```
-3.等待下载安装完成，需要在`config/app.php`中注册服务提供者同时注册下相应门面：
+2.等待下载安装完成，需要在`config/app.php`中注册服务提供者同时注册下相应门面：
 ```php
 'providers' => [
     //........
@@ -139,6 +135,7 @@ Zmxy::ZhimaCreditAntifraudVerify($data);
 ]
 ```
 verify_code中的参数说明如下： 
+在config/zmxy.php中
 
 #### 欺诈关注清单
 ```php
@@ -165,5 +162,6 @@ Zmxy::ZhimaCreditAntifraudRiskList($data);
 ]
 ```
 verify_code代表风险级别，其中的参数说明如下：
+在config/zmxy.php中
 
 好的，到这里全部接口完毕，后期会持续迭代，欢迎讨论以及给星！
