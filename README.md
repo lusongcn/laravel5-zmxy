@@ -164,9 +164,9 @@ Zmxy::ZhimaCreditAntifraudRiskList($data);
 verify_code代表风险级别，其中的参数说明如下：
 在`config/zmxy.php`中
 
-####芝麻认证
+#### 芝麻认证
 
-#####1、芝麻认证初始化
+##### 1、芝麻认证初始化
 ```php
 Zmxy::ZhimaCustomerCertificationInitialize("name","idcard");
 ```
@@ -180,7 +180,7 @@ Zmxy::ZhimaCustomerCertificationInitialize("name","idcard");
   "biz_no"=>"ZM2017123123123123100500333662",
 }
 ```
-#####2、芝麻认证开始认证
+##### 2、芝麻认证开始认证
 ```php
 Zmxy::ZhimaCustomerCertificationCertify($biz_no,$returnurl);
 ```
@@ -193,7 +193,7 @@ https://zmopenapi.zmxy.com.cn/openapi.do?app_id=1004070&channel=apppc&charset=UT
 ```
 将会返回授权链接，你将链接设置为a标签，给用户点击使用，注意：授权成功以后会返回您授权的地址，将会给你返回`$sign`和`$params`参数用于下面的获取参数
 
-#####3、根据获取的`$params`解密验签
+##### 3、根据获取的`$params`解密验签
 ```php
 Zmxy::getResult($params,$sign);
 ```
@@ -210,7 +210,7 @@ Zmxy::getResult($params,$sign);
   "biz_no" => "ZM201708023000000123400501230048",
 ]
 ```
-#####4、芝麻认证查询
+##### 4、芝麻认证查询
 ```php
 Zmxy::ZhimaCustomerCertificationQuery($biz_no);
 ```
