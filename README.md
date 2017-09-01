@@ -58,7 +58,7 @@ Zmxy::getResult($params,$sign);
 [
   "open_id" => "",
   "error_message" => "操作成功",
-  "state" => "success",
+  "state" => "您传入的身份证号码",
   "error_code" => "SUCCESS",
   "app_id" => "1004070",
   "success" => "true",

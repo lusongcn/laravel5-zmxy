@@ -62,7 +62,7 @@ class Zmxy
         $request->setPlatform("zmop");
         $request->setIdentityType("2");// 必要参数 
         $request->setIdentityParam(json_encode(array("name"=>$name,"certType"=>"IDENTITY_CARD","certNo"=>$idcard)));// 必要参数
-        $request->setBizParams("{\"auth_code\":\"M_H5\",\"channelType\":\"app\",\"state\":\"success\"}");// 
+        $request->setBizParams(json_encode(array("auth_code"=>"M_H5","channelType"=>"app","state"=>$idcard)));// 
         $url = $client->generatePageRedirectInvokeUrl($request);
         return $url;
     }
