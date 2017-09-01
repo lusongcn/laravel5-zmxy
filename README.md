@@ -64,6 +64,7 @@ Zmxy::getResult($params,$sign);
   "success" => "true",
 ]
 ```
+**注意**：state你可以自定义传入参数，用于判断用户，默认我返回的是用户身份证
 
 ##### 芝麻信用评分
 ```php
